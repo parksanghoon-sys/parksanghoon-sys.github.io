@@ -1,0 +1,57 @@
+﻿@page "/jwt"
+@using System.Text.Json
+@using parksanghoonsys.github.io.Services
+
+@inject DecoderJWTService JwtDecoderService
+
+<h3>JWT Decoder & Verifier</h3>
+
+<div class="mb-3">
+    <label for="jwtInput" class="form-label">Enter your JWT</label>
+    <textarea class="form-control" id="jwtInput" rows="3" @bind="jwtToken"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="secretKey" class="form-label">Secret Key (for HS256)</label>
+    <input type="text" class="form-control" id="secretKey" @bind="secretKey" />
+</div>
+
+<button class="btn btn-primary" @onclick="DecodeAndVerifyJwt">Decode & Verify JWT</button>
+
+@if (!string.IsNullOrEmpty(JwtDecoderService.ErrorMessage))
+{
+    <div class="alert alert-danger mt-3">@JwtDecoderService.ErrorMessage</div>
+}
+
+@if (JwtDecoderService.JwtHeader != null && JwtDecoderService.JwtPayload != null)
+{
+    <h4>Header</h4>
+    <pre>@JsonSerializer.Serialize(JwtDecoderService.JwtHeader, new JsonSerializerOptions { WriteIndented = true })</pre>
+
+    <h4>Payload</h4>
+    <pre>@JsonSerializer.Serialize(JwtDecoderService.JwtPayload, new JsonSerializerOptions { WriteIndented = true })</pre>
+
+    <h4>Signature</h4>
+    <pre>@JwtDecoderService.JwtSignature</pre>
+
+    @if (JwtDecoderService.IsSignatureValid)
+    {
+        <div class="alert alert-success mt-3">Signature is valid!</div>
+    }
+    else
+    {
+        <div class="alert alert-danger mt-3">Invalid signature!</div>
+    }
+}
+
+@code {
+    private string jwtToken = "";
+    private string secretKey = "";
+
+    private void DecodeAndVerifyJwt()
+    {
+        JwtDecoderService.DecodeAndVerify(jwtToken, secretKey);
+    }
+}
+
+
