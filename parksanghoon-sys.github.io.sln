@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parksanghoon-sys.github.io", "parksanghoon-sys.github.io.csproj", "{1329620D-ADA6-43D3-9EF0-B021764346BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parksanghoon-sys.github.ioJWTTest", "..\parksanghoon-sys.github.ioJWTTest\parksanghoon-sys.github.ioJWTTest.csproj", "{E3E3FA17-5C56-4A20-B386-97E5E60FBE6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1329620D-ADA6-43D3-9EF0-B021764346BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1329620D-ADA6-43D3-9EF0-B021764346BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1329620D-ADA6-43D3-9EF0-B021764346BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3E3FA17-5C56-4A20-B386-97E5E60FBE6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E3FA17-5C56-4A20-B386-97E5E60FBE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E3FA17-5C56-4A20-B386-97E5E60FBE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E3FA17-5C56-4A20-B386-97E5E60FBE6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
