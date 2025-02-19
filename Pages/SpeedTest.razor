@@ -1,0 +1,29 @@
+﻿@page "/speedtest"
+
+@inject IJSRuntime JS
+<PageTitle>네트워크 속도 테스트</PageTitle>
+
+<h3>네트워크 속도 테스트</h3>
+<button @onclick="StartTest" class="btn btn-primary">테스트 시작</button>
+
+<p>다운로드 속도: @DownloadSpeed Mbps</p>
+<p>업로드 속도: @UploadSpeed Mbps</p>
+<p>핑: @PingTime ms</p>
+
+@code {
+    private string DownloadSpeed = "대기 중...";
+    private string UploadSpeed = "대기 중...";
+    private string PingTime = "대기 중...";
+
+    private async Task StartTest()
+    {
+        PingTime = await JS.InvokeAsync<string>("measurePing");
+        StateHasChanged();
+        
+        DownloadSpeed = await JS.InvokeAsync<string>("measureDownloadSpeed");
+        StateHasChanged();
+
+        UploadSpeed = await JS.InvokeAsync<string>("measureUploadSpeed");
+        StateHasChanged();
+    }
+}
